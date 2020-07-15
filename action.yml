@@ -1,0 +1,24 @@
+name: 'Issues automation'
+description: 'Project issues automatic update by labelling'
+inputs:
+  project:
+    description: 'Repository project board name'
+    required: true
+  initial_column:
+    description: 'New issue automation column'
+    required: false
+    default: 'To do'
+  mapping:
+    description: 'Mapping between column and labels'
+    required: true
+    default:
+      [
+        { labels: [{ name: 'in_progress' }], columnName: 'In progress' },
+        { labels: [{ name: 'review' }], columnName: 'Done' },
+      ]
+outputs:
+  message:
+    description: 'Done!'
+runs:
+  using: 'node12'
+  main: 'index.js'
